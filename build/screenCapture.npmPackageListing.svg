@@ -1,24 +1,24 @@
 <svg height="334" width="720" xmlns="http://www.w3.org/2000/svg">
 <rect height="334" fill="#555" width="720"></rect>
 <text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
-<tspan x="10" y="26">  0.  2017-04-03 22:17:53 +0000    28589 byte  .</tspan>
-<tspan x="10" y="42">  1.  2017-04-03 22:17:53 +0000     2082 byte  CHANGES</tspan>
-<tspan x="10" y="58">  2.  2017-04-03 22:17:53 +0000     1080 byte  LICENSE</tspan>
-<tspan x="10" y="74">  3.  2017-04-03 22:17:53 +0000     3335 byte  README.md</tspan>
-<tspan x="10" y="90">  4.  2017-04-03 22:17:53 +0000      457 byte  all-off.js</tspan>
-<tspan x="10" y="106">  5.  2017-04-03 22:17:53 +0000     2079 byte  benchmark/many-on.js</tspan>
-<tspan x="10" y="122">  6.  2017-04-03 22:17:53 +0000     1666 byte  benchmark/single-on.js</tspan>
-<tspan x="10" y="138">  7.  2017-04-03 22:17:53 +0000      395 byte  emit-error.js</tspan>
-<tspan x="10" y="154">  8.  2017-04-03 22:17:53 +0000      433 byte  has-listeners.js</tspan>
-<tspan x="10" y="170">  9.  2017-04-03 22:17:53 +0000     3000 byte  index.js</tspan>
-<tspan x="10" y="186"> 10.  2017-04-03 22:17:53 +0000     2754 byte  package.json</tspan>
-<tspan x="10" y="202"> 11.  2017-04-03 22:17:53 +0000     1177 byte  pipe.js</tspan>
-<tspan x="10" y="218"> 12.  2017-04-03 22:17:53 +0000      736 byte  test/all-off.js</tspan>
-<tspan x="10" y="234"> 13.  2017-04-03 22:17:53 +0000      366 byte  test/emit-error.js</tspan>
-<tspan x="10" y="250"> 14.  2017-04-03 22:17:53 +0000     1337 byte  test/has-listeners.js</tspan>
-<tspan x="10" y="266"> 15.  2017-04-03 22:17:53 +0000     2518 byte  test/index.js</tspan>
-<tspan x="10" y="282"> 16.  2017-04-03 22:17:53 +0000      972 byte  test/pipe.js</tspan>
-<tspan x="10" y="298"> 17.  2017-04-03 22:17:53 +0000     2821 byte  test/unify.js</tspan>
-<tspan x="10" y="314"> 18.  2017-04-03 22:17:53 +0000     1381 byte  unify.js</tspan>
+<tspan x="10" y="26">  0.  2017-04-17 11:57:29 +0000    28589 bytes  .</tspan>
+<tspan x="10" y="42">  1.  2017-04-17 11:57:29 +0000     2082 bytes  CHANGES</tspan>
+<tspan x="10" y="58">  2.  2017-04-17 11:57:29 +0000     1080 bytes  LICENSE</tspan>
+<tspan x="10" y="74">  3.  2017-04-17 11:57:29 +0000     3335 bytes  README.md</tspan>
+<tspan x="10" y="90">  4.  2017-04-17 11:57:29 +0000      457 bytes  all-off.js</tspan>
+<tspan x="10" y="106">  5.  2017-04-17 11:57:29 +0000     2079 bytes  benchmark/many-on.js</tspan>
+<tspan x="10" y="122">  6.  2017-04-17 11:57:29 +0000     1666 bytes  benchmark/single-on.js</tspan>
+<tspan x="10" y="138">  7.  2017-04-17 11:57:29 +0000      395 bytes  emit-error.js</tspan>
+<tspan x="10" y="154">  8.  2017-04-17 11:57:29 +0000      433 bytes  has-listeners.js</tspan>
+<tspan x="10" y="170">  9.  2017-04-17 11:57:29 +0000     3000 bytes  index.js</tspan>
+<tspan x="10" y="186"> 10.  2017-04-17 11:57:29 +0000     2754 bytes  package.json</tspan>
+<tspan x="10" y="202"> 11.  2017-04-17 11:57:29 +0000     1177 bytes  pipe.js</tspan>
+<tspan x="10" y="218"> 12.  2017-04-17 11:57:29 +0000      736 bytes  test/all-off.js</tspan>
+<tspan x="10" y="234"> 13.  2017-04-17 11:57:29 +0000      366 bytes  test/emit-error.js</tspan>
+<tspan x="10" y="250"> 14.  2017-04-17 11:57:29 +0000     1337 bytes  test/has-listeners.js</tspan>
+<tspan x="10" y="266"> 15.  2017-04-17 11:57:29 +0000     2518 bytes  test/index.js</tspan>
+<tspan x="10" y="282"> 16.  2017-04-17 11:57:29 +0000      972 bytes  test/pipe.js</tspan>
+<tspan x="10" y="298"> 17.  2017-04-17 11:57:29 +0000     2821 bytes  test/unify.js</tspan>
+<tspan x="10" y="314"> 18.  2017-04-17 11:57:29 +0000     1381 bytes  unify.js</tspan>
 </text>
 </svg>

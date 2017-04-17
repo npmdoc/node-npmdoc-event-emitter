@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/medikoo/event-emitter#readme"
-
-    >event-emitter (v0.3.5)</a>
+    <a href="https://github.com/medikoo/event-emitter#readme">event-emitter (v0.3.5)</a>
 </h1>
 <h4>Environment agnostic event emitter</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.event-emitter">module event-emitter</a><ol>
 
@@ -372,12 +365,12 @@
 	value(emitter);
 
 	if (type !== undefined) {
-		data = hasOwnProperty.call(emitter, &#x27;__ee__&#x27;) &#x26;&#x26; emitter.__ee__;
+		data = hasOwnProperty.call(emitter, '__ee__') &amp;&amp; emitter.__ee__;
 		if (!data) return;
 		if (data[type]) delete data[type];
 		return;
 	}
-	if (hasOwnProperty.call(emitter, &#x27;__ee__&#x27;)) delete emitter.__ee__;
+	if (hasOwnProperty.call(emitter, '__ee__')) delete emitter.__ee__;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -392,10 +385,10 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">emit_error = function (err) {
-	(ensureObject(this) &#x26;&#x26; ensureError(err));
-	if (!hasOwnProperty.call(ensureObject(this), &#x27;__ee__&#x27;)) throw err;
+	(ensureObject(this) &amp;&amp; ensureError(err));
+	if (!hasOwnProperty.call(ensureObject(this), '__ee__')) throw err;
 	if (!this.__ee__.error) throw err;
-	this.emit(&#x27;error&#x27;, err);
+	this.emit('error', err);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -413,10 +406,10 @@
 	var type;
 	value(obj);
 	type = arguments[1];
-	if (arguments.length &#x3e; 1) {
-		return hasOwnProperty.call(obj, &#x27;__ee__&#x27;) &#x26;&#x26; Boolean(obj.__ee__[type]);
+	if (arguments.length &gt; 1) {
+		return hasOwnProperty.call(obj, '__ee__') &amp;&amp; Boolean(obj.__ee__[type]);
 	}
-	return obj.hasOwnProperty(&#x27;__ee__&#x27;) &#x26;&#x26; !isEmpty(obj.__ee__);
+	return obj.hasOwnProperty('__ee__') &amp;&amp; !isEmpty(obj.__ee__);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -433,14 +426,14 @@
     <li>description and source-code<pre class="apidocCodePre">methods.emit = function (type) {
 	var i, l, listener, listeners, args;
 
-	if (!hasOwnProperty.call(this, &#x27;__ee__&#x27;)) return;
+	if (!hasOwnProperty.call(this, '__ee__')) return;
 	listeners = this.__ee__[type];
 	if (!listeners) return;
 
-	if (typeof listeners === &#x27;object&#x27;) {
+	if (typeof listeners === 'object') {
 		l = arguments.length;
 		args = new Array(l - 1);
-		for (i = 1; i &#x3c; l; ++i) args[i - 1] = arguments[i];
+		for (i = 1; i &lt; l; ++i) args[i - 1] = arguments[i];
 
 		listeners = listeners.slice();
 		for (i = 0; (listener = listeners[i]); ++i) {
@@ -460,7 +453,7 @@
 		default:
 			l = arguments.length;
 			args = new Array(l - 1);
-			for (i = 1; i &#x3c; l; ++i) {
+			for (i = 1; i &lt; l; ++i) {
 				args[i - 1] = arguments[i];
 			}
 			apply.call(listeners, this, args);
@@ -484,12 +477,12 @@
 
 	callable(listener);
 
-	if (!hasOwnProperty.call(this, &#x27;__ee__&#x27;)) return this;
+	if (!hasOwnProperty.call(this, '__ee__')) return this;
 	data = this.__ee__;
 	if (!data[type]) return this;
 	listeners = data[type];
 
-	if (typeof listeners === &#x27;object&#x27;) {
+	if (typeof listeners === 'object') {
 		for (i = 0; (candidate = listeners[i]); ++i) {
 			if ((candidate === listener) ||
 					(candidate.__eeOnceListener__ === listener)) {
@@ -523,15 +516,15 @@
 
 	callable(listener);
 
-	if (!hasOwnProperty.call(this, &#x27;__ee__&#x27;)) {
+	if (!hasOwnProperty.call(this, '__ee__')) {
 		data = descriptor.value = create(null);
-		defineProperty(this, &#x27;__ee__&#x27;, descriptor);
+		defineProperty(this, '__ee__', descriptor);
 		descriptor.value = null;
 	} else {
 		data = this.__ee__;
 	}
 	if (!data[type]) data[type] = listener;
-	else if (typeof data[type] === &#x27;object&#x27;) data[type].push(listener);
+	else if (typeof data[type] === 'object') data[type].push(listener);
 	else data[type] = [data[type], listener];
 
 	return this;
@@ -576,21 +569,21 @@
     <li>description and source-code<pre class="apidocCodePre">pipe = function (e1, e2) {
 	var pipes, pipe, desc, name;
 
-	(value(e1) &#x26;&#x26; value(e2));
+	(value(e1) &amp;&amp; value(e2));
 	name = arguments[2];
-	if (name === undefined) name = &#x27;emit&#x27;;
+	if (name === undefined) name = 'emit';
 
 	pipe = {
 		close: function () { remove.call(pipes, e2); }
 	};
-	if (hasOwnProperty.call(e1, &#x27;__eePipes__&#x27;)) {
+	if (hasOwnProperty.call(e1, '__eePipes__')) {
 		(pipes = e1.__eePipes__).push(e2);
 		return pipe;
 	}
-	defineProperty(e1, &#x27;__eePipes__&#x27;, d(&#x27;c&#x27;, pipes = [e2]));
+	defineProperty(e1, '__eePipes__', d('c', pipes = [e2]));
 	desc = getOwnPropertyDescriptor(e1, name);
 	if (!desc) {
-		desc = d(&#x27;c&#x27;, undefined);
+		desc = d('c', undefined);
 	} else {
 		delete desc.get;
 		delete desc.set;
@@ -632,23 +625,23 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">unify = function (e1, e2) {
 	var data;
-	(validValue(e1) &#x26;&#x26; validValue(e2));
-	if (!hasOwnProperty.call(e1, &#x27;__ee__&#x27;)) {
-		if (!hasOwnProperty.call(e2, &#x27;__ee__&#x27;)) {
+	(validValue(e1) &amp;&amp; validValue(e2));
+	if (!hasOwnProperty.call(e1, '__ee__')) {
+		if (!hasOwnProperty.call(e2, '__ee__')) {
 			d.value = create(null);
-			defineProperty(e1, &#x27;__ee__&#x27;, d);
-			defineProperty(e2, &#x27;__ee__&#x27;, d);
+			defineProperty(e1, '__ee__', d);
+			defineProperty(e2, '__ee__', d);
 			d.value = null;
 			return;
 		}
 		d.value = e2.__ee__;
-		defineProperty(e1, &#x27;__ee__&#x27;, d);
+		defineProperty(e1, '__ee__', d);
 		d.value = null;
 		return;
 	}
 	data = d.value = e1.__ee__;
-	if (!hasOwnProperty.call(e2, &#x27;__ee__&#x27;)) {
-		defineProperty(e2, &#x27;__ee__&#x27;, d);
+	if (!hasOwnProperty.call(e2, '__ee__')) {
+		defineProperty(e2, '__ee__', d);
 		d.value = null;
 		return;
 	}
@@ -658,17 +651,17 @@
 			data[name] = listener;
 			return;
 		}
-		if (typeof data[name] === &#x27;object&#x27;) {
-			if (typeof listener === &#x27;object&#x27;) push.apply(data[name], listener);
+		if (typeof data[name] === 'object') {
+			if (typeof listener === 'object') push.apply(data[name], listener);
 			else data[name].push(listener);
-		} else if (typeof listener === &#x27;object&#x27;) {
+		} else if (typeof listener === 'object') {
 			listener.unshift(data[name]);
 			data[name] = listener;
 		} else {
 			data[name] = [data[name], listener];
 		}
 	});
-	defineProperty(e2, &#x27;__ee__&#x27;, d);
+	defineProperty(e2, '__ee__', d);
 	d.value = null;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -696,12 +689,12 @@
 	value(emitter);
 
 	if (type !== undefined) {
-		data = hasOwnProperty.call(emitter, &#x27;__ee__&#x27;) &#x26;&#x26; emitter.__ee__;
+		data = hasOwnProperty.call(emitter, '__ee__') &amp;&amp; emitter.__ee__;
 		if (!data) return;
 		if (data[type]) delete data[type];
 		return;
 	}
-	if (hasOwnProperty.call(emitter, &#x27;__ee__&#x27;)) delete emitter.__ee__;
+	if (hasOwnProperty.call(emitter, '__ee__')) delete emitter.__ee__;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -721,10 +714,10 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">emit_error = function (err) {
-	(ensureObject(this) &#x26;&#x26; ensureError(err));
-	if (!hasOwnProperty.call(ensureObject(this), &#x27;__ee__&#x27;)) throw err;
+	(ensureObject(this) &amp;&amp; ensureError(err));
+	if (!hasOwnProperty.call(ensureObject(this), '__ee__')) throw err;
 	if (!this.__ee__.error) throw err;
-	this.emit(&#x27;error&#x27;, err);
+	this.emit('error', err);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -747,10 +740,10 @@
 	var type;
 	value(obj);
 	type = arguments[1];
-	if (arguments.length &#x3e; 1) {
-		return hasOwnProperty.call(obj, &#x27;__ee__&#x27;) &#x26;&#x26; Boolean(obj.__ee__[type]);
+	if (arguments.length &gt; 1) {
+		return hasOwnProperty.call(obj, '__ee__') &amp;&amp; Boolean(obj.__ee__[type]);
 	}
-	return obj.hasOwnProperty(&#x27;__ee__&#x27;) &#x26;&#x26; !isEmpty(obj.__ee__);
+	return obj.hasOwnProperty('__ee__') &amp;&amp; !isEmpty(obj.__ee__);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -772,14 +765,14 @@
     <li>description and source-code<pre class="apidocCodePre">emit = function (type) {
 	var i, l, listener, listeners, args;
 
-	if (!hasOwnProperty.call(this, &#x27;__ee__&#x27;)) return;
+	if (!hasOwnProperty.call(this, '__ee__')) return;
 	listeners = this.__ee__[type];
 	if (!listeners) return;
 
-	if (typeof listeners === &#x27;object&#x27;) {
+	if (typeof listeners === 'object') {
 		l = arguments.length;
 		args = new Array(l - 1);
-		for (i = 1; i &#x3c; l; ++i) args[i - 1] = arguments[i];
+		for (i = 1; i &lt; l; ++i) args[i - 1] = arguments[i];
 
 		listeners = listeners.slice();
 		for (i = 0; (listener = listeners[i]); ++i) {
@@ -799,7 +792,7 @@
 		default:
 			l = arguments.length;
 			args = new Array(l - 1);
-			for (i = 1; i &#x3c; l; ++i) {
+			for (i = 1; i &lt; l; ++i) {
 				args[i - 1] = arguments[i];
 			}
 			apply.call(listeners, this, args);
@@ -807,18 +800,18 @@
 	}
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  // … react to &#x27;test&#x27; event
+  // â€¦ react to 'test' event
 });
 
-emitter.once(&#x27;test&#x27;, function (args) {
-  // … react to first &#x27;test&#x27; event (invoked only once!)
+emitter.once('test', function (args) {
+  // â€¦ react to first 'test' event (invoked only once!)
 });
 
-emitter.<span class="apidocCodeKeywordSpan">emit</span>(&#x27;test&#x27;, arg1, arg2/*…args*/); // Two above listeners invoked
-emitter.emit(&#x27;test&#x27;, arg1, arg2/*…args*/); // Only first listener invoked
+emitter.<span class="apidocCodeKeywordSpan">emit</span>('test', arg1, arg2/*â€¦args*/); // Two above listeners invoked
+emitter.emit('test', arg1, arg2/*â€¦args*/); // Only first listener invoked
 
-emitter.off(&#x27;test&#x27;, listener);              // Removed first listener
-emitter.emit(&#x27;test&#x27;, arg1, arg2/*…args*/); // No listeners invoked
+emitter.off('test', listener);              // Removed first listener
+emitter.emit('test', arg1, arg2/*â€¦args*/); // No listeners invoked
 ```
 ### Additional utilities
 ...</pre></li>
@@ -838,12 +831,12 @@ emitter.emit(&#x27;test&#x27;, arg1, arg2/*…args*/); // No listeners invoked
 
 	callable(listener);
 
-	if (!hasOwnProperty.call(this, &#x27;__ee__&#x27;)) return this;
+	if (!hasOwnProperty.call(this, '__ee__')) return this;
 	data = this.__ee__;
 	if (!data[type]) return this;
 	listeners = data[type];
 
-	if (typeof listeners === &#x27;object&#x27;) {
+	if (typeof listeners === 'object') {
 		for (i = 0; (candidate = listeners[i]); ++i) {
 			if ((candidate === listener) ||
 					(candidate.__eeOnceListener__ === listener)) {
@@ -861,15 +854,15 @@ emitter.emit(&#x27;test&#x27;, arg1, arg2/*…args*/); // No listeners invoked
 	return this;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-emitter.once(&#x27;test&#x27;, function (args) {
-  // … react to first &#x27;test&#x27; event (invoked only once!)
+emitter.once('test', function (args) {
+  // â€¦ react to first 'test' event (invoked only once!)
 });
 
-emitter.emit(&#x27;test&#x27;, arg1, arg2/*…args*/); // Two above listeners invoked
-emitter.emit(&#x27;test&#x27;, arg1, arg2/*…args*/); // Only first listener invoked
+emitter.emit('test', arg1, arg2/*â€¦args*/); // Two above listeners invoked
+emitter.emit('test', arg1, arg2/*â€¦args*/); // Only first listener invoked
 
-emitter.<span class="apidocCodeKeywordSpan">off</span>(&#x27;test&#x27;, listener);              // Removed first listener
-emitter.emit(&#x27;test&#x27;, arg1, arg2/*…args*/); // No listeners invoked
+emitter.<span class="apidocCodeKeywordSpan">off</span>('test', listener);              // Removed first listener
+emitter.emit('test', arg1, arg2/*â€¦args*/); // No listeners invoked
 ```
 ### Additional utilities
 
@@ -893,33 +886,33 @@ Removes all listeners from given event emitter object
 
 	callable(listener);
 
-	if (!hasOwnProperty.call(this, &#x27;__ee__&#x27;)) {
+	if (!hasOwnProperty.call(this, '__ee__')) {
 		data = descriptor.value = create(null);
-		defineProperty(this, &#x27;__ee__&#x27;, descriptor);
+		defineProperty(this, '__ee__', descriptor);
 		descriptor.value = null;
 	} else {
 		data = this.__ee__;
 	}
 	if (!data[type]) data[type] = listener;
-	else if (typeof data[type] === &#x27;object&#x27;) data[type].push(listener);
+	else if (typeof data[type] === 'object') data[type].push(listener);
 	else data[type] = [data[type], listener];
 
 	return this;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var ee = require(&#x27;event-emitter&#x27;);
+var ee = require('event-emitter');
 
 var MyClass = function () { /* .. */ };
 ee(MyClass.prototype); // All instances of MyClass will expose event-emitter interface
 
 var emitter = new MyClass(), listener;
 
-emitter.<span class="apidocCodeKeywordSpan">on</span>(&#x27;test&#x27;, listener = function (args) {
-  // … react to &#x27;test&#x27; event
+emitter.<span class="apidocCodeKeywordSpan">on</span>('test', listener = function (args) {
+  // â€¦ react to 'test' event
 });
 
-emitter.once(&#x27;test&#x27;, function (args) {
-  // … react to first &#x27;test&#x27; event (invoked only once!)
+emitter.once('test', function (args) {
+  // â€¦ react to first 'test' event (invoked only once!)
 });
 ...</pre></li>
     </ul>
@@ -950,18 +943,18 @@ emitter.once(&#x27;test&#x27;, function (args) {
 
 var emitter = new MyClass(), listener;
 
-emitter.on(&#x27;test&#x27;, listener = function (args) {
-  // … react to &#x27;test&#x27; event
+emitter.on('test', listener = function (args) {
+  // â€¦ react to 'test' event
 });
 
-emitter.<span class="apidocCodeKeywordSpan">once</span>(&#x27;test&#x27;, function (args) {
-  // … react to first &#x27;test&#x27; event (invoked only once!)
+emitter.<span class="apidocCodeKeywordSpan">once</span>('test', function (args) {
+  // â€¦ react to first 'test' event (invoked only once!)
 });
 
-emitter.emit(&#x27;test&#x27;, arg1, arg2/*…args*/); // Two above listeners invoked
-emitter.emit(&#x27;test&#x27;, arg1, arg2/*…args*/); // Only first listener invoked
+emitter.emit('test', arg1, arg2/*â€¦args*/); // Two above listeners invoked
+emitter.emit('test', arg1, arg2/*â€¦args*/); // Only first listener invoked
 
-emitter.off(&#x27;test&#x27;, listener);              // Removed first listener
+emitter.off('test', listener);              // Removed first listener
 ...</pre></li>
     </ul>
 
@@ -982,14 +975,14 @@ emitter.off(&#x27;test&#x27;, listener);              // Removed first listener
     <li>description and source-code<pre class="apidocCodePre">emit = function (type) {
 	var i, l, listener, listeners, args;
 
-	if (!hasOwnProperty.call(this, &#x27;__ee__&#x27;)) return;
+	if (!hasOwnProperty.call(this, '__ee__')) return;
 	listeners = this.__ee__[type];
 	if (!listeners) return;
 
-	if (typeof listeners === &#x27;object&#x27;) {
+	if (typeof listeners === 'object') {
 		l = arguments.length;
 		args = new Array(l - 1);
-		for (i = 1; i &#x3c; l; ++i) args[i - 1] = arguments[i];
+		for (i = 1; i &lt; l; ++i) args[i - 1] = arguments[i];
 
 		listeners = listeners.slice();
 		for (i = 0; (listener = listeners[i]); ++i) {
@@ -1009,7 +1002,7 @@ emitter.off(&#x27;test&#x27;, listener);              // Removed first listener
 		default:
 			l = arguments.length;
 			args = new Array(l - 1);
-			for (i = 1; i &#x3c; l; ++i) {
+			for (i = 1; i &lt; l; ++i) {
 				args[i - 1] = arguments[i];
 			}
 			apply.call(listeners, this, args);
@@ -1017,18 +1010,18 @@ emitter.off(&#x27;test&#x27;, listener);              // Removed first listener
 	}
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  // … react to &#x27;test&#x27; event
+  // â€¦ react to 'test' event
 });
 
-emitter.once(&#x27;test&#x27;, function (args) {
-  // … react to first &#x27;test&#x27; event (invoked only once!)
+emitter.once('test', function (args) {
+  // â€¦ react to first 'test' event (invoked only once!)
 });
 
-emitter.<span class="apidocCodeKeywordSpan">emit</span>(&#x27;test&#x27;, arg1, arg2/*…args*/); // Two above listeners invoked
-emitter.emit(&#x27;test&#x27;, arg1, arg2/*…args*/); // Only first listener invoked
+emitter.<span class="apidocCodeKeywordSpan">emit</span>('test', arg1, arg2/*â€¦args*/); // Two above listeners invoked
+emitter.emit('test', arg1, arg2/*â€¦args*/); // Only first listener invoked
 
-emitter.off(&#x27;test&#x27;, listener);              // Removed first listener
-emitter.emit(&#x27;test&#x27;, arg1, arg2/*…args*/); // No listeners invoked
+emitter.off('test', listener);              // Removed first listener
+emitter.emit('test', arg1, arg2/*â€¦args*/); // No listeners invoked
 ```
 ### Additional utilities
 ...</pre></li>
@@ -1053,12 +1046,12 @@ emitter.emit(&#x27;test&#x27;, arg1, arg2/*…args*/); // No listeners invoked
 
 	callable(listener);
 
-	if (!hasOwnProperty.call(this, &#x27;__ee__&#x27;)) return this;
+	if (!hasOwnProperty.call(this, '__ee__')) return this;
 	data = this.__ee__;
 	if (!data[type]) return this;
 	listeners = data[type];
 
-	if (typeof listeners === &#x27;object&#x27;) {
+	if (typeof listeners === 'object') {
 		for (i = 0; (candidate = listeners[i]); ++i) {
 			if ((candidate === listener) ||
 					(candidate.__eeOnceListener__ === listener)) {
@@ -1076,15 +1069,15 @@ emitter.emit(&#x27;test&#x27;, arg1, arg2/*…args*/); // No listeners invoked
 	return this;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-emitter.once(&#x27;test&#x27;, function (args) {
-  // … react to first &#x27;test&#x27; event (invoked only once!)
+emitter.once('test', function (args) {
+  // â€¦ react to first 'test' event (invoked only once!)
 });
 
-emitter.emit(&#x27;test&#x27;, arg1, arg2/*…args*/); // Two above listeners invoked
-emitter.emit(&#x27;test&#x27;, arg1, arg2/*…args*/); // Only first listener invoked
+emitter.emit('test', arg1, arg2/*â€¦args*/); // Two above listeners invoked
+emitter.emit('test', arg1, arg2/*â€¦args*/); // Only first listener invoked
 
-emitter.<span class="apidocCodeKeywordSpan">off</span>(&#x27;test&#x27;, listener);              // Removed first listener
-emitter.emit(&#x27;test&#x27;, arg1, arg2/*…args*/); // No listeners invoked
+emitter.<span class="apidocCodeKeywordSpan">off</span>('test', listener);              // Removed first listener
+emitter.emit('test', arg1, arg2/*â€¦args*/); // No listeners invoked
 ```
 ### Additional utilities
 
@@ -1113,33 +1106,33 @@ Removes all listeners from given event emitter object
 
 	callable(listener);
 
-	if (!hasOwnProperty.call(this, &#x27;__ee__&#x27;)) {
+	if (!hasOwnProperty.call(this, '__ee__')) {
 		data = descriptor.value = create(null);
-		defineProperty(this, &#x27;__ee__&#x27;, descriptor);
+		defineProperty(this, '__ee__', descriptor);
 		descriptor.value = null;
 	} else {
 		data = this.__ee__;
 	}
 	if (!data[type]) data[type] = listener;
-	else if (typeof data[type] === &#x27;object&#x27;) data[type].push(listener);
+	else if (typeof data[type] === 'object') data[type].push(listener);
 	else data[type] = [data[type], listener];
 
 	return this;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-var ee = require(&#x27;event-emitter&#x27;);
+var ee = require('event-emitter');
 
 var MyClass = function () { /* .. */ };
 ee(MyClass.prototype); // All instances of MyClass will expose event-emitter interface
 
 var emitter = new MyClass(), listener;
 
-emitter.<span class="apidocCodeKeywordSpan">on</span>(&#x27;test&#x27;, listener = function (args) {
-  // … react to &#x27;test&#x27; event
+emitter.<span class="apidocCodeKeywordSpan">on</span>('test', listener = function (args) {
+  // â€¦ react to 'test' event
 });
 
-emitter.once(&#x27;test&#x27;, function (args) {
-  // … react to first &#x27;test&#x27; event (invoked only once!)
+emitter.once('test', function (args) {
+  // â€¦ react to first 'test' event (invoked only once!)
 });
 ...</pre></li>
     </ul>
@@ -1175,18 +1168,18 @@ emitter.once(&#x27;test&#x27;, function (args) {
 
 var emitter = new MyClass(), listener;
 
-emitter.on(&#x27;test&#x27;, listener = function (args) {
-  // … react to &#x27;test&#x27; event
+emitter.on('test', listener = function (args) {
+  // â€¦ react to 'test' event
 });
 
-emitter.<span class="apidocCodeKeywordSpan">once</span>(&#x27;test&#x27;, function (args) {
-  // … react to first &#x27;test&#x27; event (invoked only once!)
+emitter.<span class="apidocCodeKeywordSpan">once</span>('test', function (args) {
+  // â€¦ react to first 'test' event (invoked only once!)
 });
 
-emitter.emit(&#x27;test&#x27;, arg1, arg2/*…args*/); // Two above listeners invoked
-emitter.emit(&#x27;test&#x27;, arg1, arg2/*…args*/); // Only first listener invoked
+emitter.emit('test', arg1, arg2/*â€¦args*/); // Two above listeners invoked
+emitter.emit('test', arg1, arg2/*â€¦args*/); // Only first listener invoked
 
-emitter.off(&#x27;test&#x27;, listener);              // Removed first listener
+emitter.off('test', listener);              // Removed first listener
 ...</pre></li>
     </ul>
 
@@ -1207,21 +1200,21 @@ emitter.off(&#x27;test&#x27;, listener);              // Removed first listener
     <li>description and source-code<pre class="apidocCodePre">pipe = function (e1, e2) {
 	var pipes, pipe, desc, name;
 
-	(value(e1) &#x26;&#x26; value(e2));
+	(value(e1) &amp;&amp; value(e2));
 	name = arguments[2];
-	if (name === undefined) name = &#x27;emit&#x27;;
+	if (name === undefined) name = 'emit';
 
 	pipe = {
 		close: function () { remove.call(pipes, e2); }
 	};
-	if (hasOwnProperty.call(e1, &#x27;__eePipes__&#x27;)) {
+	if (hasOwnProperty.call(e1, '__eePipes__')) {
 		(pipes = e1.__eePipes__).push(e2);
 		return pipe;
 	}
-	defineProperty(e1, &#x27;__eePipes__&#x27;, d(&#x27;c&#x27;, pipes = [e2]));
+	defineProperty(e1, '__eePipes__', d('c', pipes = [e2]));
 	desc = getOwnPropertyDescriptor(e1, name);
 	if (!desc) {
-		desc = d(&#x27;c&#x27;, undefined);
+		desc = d('c', undefined);
 	} else {
 		delete desc.get;
 		delete desc.set;
@@ -1271,23 +1264,23 @@ emitter.off(&#x27;test&#x27;, listener);              // Removed first listener
     <ul>
     <li>description and source-code<pre class="apidocCodePre">unify = function (e1, e2) {
 	var data;
-	(validValue(e1) &#x26;&#x26; validValue(e2));
-	if (!hasOwnProperty.call(e1, &#x27;__ee__&#x27;)) {
-		if (!hasOwnProperty.call(e2, &#x27;__ee__&#x27;)) {
+	(validValue(e1) &amp;&amp; validValue(e2));
+	if (!hasOwnProperty.call(e1, '__ee__')) {
+		if (!hasOwnProperty.call(e2, '__ee__')) {
 			d.value = create(null);
-			defineProperty(e1, &#x27;__ee__&#x27;, d);
-			defineProperty(e2, &#x27;__ee__&#x27;, d);
+			defineProperty(e1, '__ee__', d);
+			defineProperty(e2, '__ee__', d);
 			d.value = null;
 			return;
 		}
 		d.value = e2.__ee__;
-		defineProperty(e1, &#x27;__ee__&#x27;, d);
+		defineProperty(e1, '__ee__', d);
 		d.value = null;
 		return;
 	}
 	data = d.value = e1.__ee__;
-	if (!hasOwnProperty.call(e2, &#x27;__ee__&#x27;)) {
-		defineProperty(e2, &#x27;__ee__&#x27;, d);
+	if (!hasOwnProperty.call(e2, '__ee__')) {
+		defineProperty(e2, '__ee__', d);
 		d.value = null;
 		return;
 	}
@@ -1297,17 +1290,17 @@ emitter.off(&#x27;test&#x27;, listener);              // Removed first listener
 			data[name] = listener;
 			return;
 		}
-		if (typeof data[name] === &#x27;object&#x27;) {
-			if (typeof listener === &#x27;object&#x27;) push.apply(data[name], listener);
+		if (typeof data[name] === 'object') {
+			if (typeof listener === 'object') push.apply(data[name], listener);
 			else data[name].push(listener);
-		} else if (typeof listener === &#x27;object&#x27;) {
+		} else if (typeof listener === 'object') {
 			listener.unshift(data[name]);
 			data[name] = listener;
 		} else {
 			data[name] = [data[name], listener];
 		}
 	});
-	defineProperty(e2, &#x27;__ee__&#x27;, d);
+	defineProperty(e2, '__ee__', d);
 	d.value = null;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1322,3 +1315,4 @@ emitter.off(&#x27;test&#x27;, listener);              // Removed first listener
     ]
 </div>
 </div>
+</body></html>
