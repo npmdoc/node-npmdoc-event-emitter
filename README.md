@@ -1,4 +1,7 @@
-# api documentation for  [event-emitter (v0.3.5)](https://github.com/medikoo/event-emitter#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-event-emitter.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-event-emitter) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-event-emitter.svg)](https://travis-ci.org/npmdoc/node-npmdoc-event-emitter)
+# npmdoc-event-emitter
+
+#### basic api documentation for  [event-emitter (v0.3.5)](https://github.com/medikoo/event-emitter#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-event-emitter.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-event-emitter) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-event-emitter.svg)](https://travis-ci.org/npmdoc/node-npmdoc-event-emitter)
+
 #### Environment agnostic event emitter
 
 [![NPM](https://nodei.co/npm/event-emitter.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/event-emitter)
@@ -68,7 +71,8 @@
         "lint-console": "node node_modules/xlint/bin/xlint --linter=node_modules/xlint-jslint-medikoo/index.js --watch",
         "test": "node ./node_modules/tad/bin/tad"
     },
-    "version": "0.3.5"
+    "version": "0.3.5",
+    "bin": {}
 }
 ```
 
